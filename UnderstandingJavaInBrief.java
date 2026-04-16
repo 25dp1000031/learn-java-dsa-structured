@@ -249,9 +249,12 @@ class UnderstandingHowToTakeInput {
 
     // in both scanner and bf we have to explicitly tell tell the code that its
     // System.in
+    // don't be surprised you can use nested class and nested functions in java
     class InputWithScanner {
+        Scanner sc = new Scanner(System.in);
+
         void SimpleInput() {
-            Scanner sc = new Scanner(System.in);
+            // input : 1 hello
             System.out.println("Enter the input : ");
             int a = sc.nextInt(); // if its an int
             String b = sc.next(); // if its its a string
@@ -265,11 +268,11 @@ class UnderstandingHowToTakeInput {
                                                                                                                // StringBuilder
             // any double, bigint etc can be taken just change the Int to required for
             // example sc.nextDouble();
-            sc.close(); // dont forget to close the scanner since it takes a lot of resources
+            sc.close(); // don't forget to close the scanner since it takes a lot of resources
         }
 
         void MultipleMixInput() {
-            Scanner sc = new Scanner(System.in);
+            // input : 1 hello 3.14
             System.out.println("Enter the multiple inputs : ");
             int a = sc.nextInt();
             String b = sc.next();
@@ -279,11 +282,89 @@ class UnderstandingHowToTakeInput {
         }
 
         void MultipleTestCases() {
+            // input : 2 4 hello world from aayush 3 java or python
+            // here we have to use loops to do this so we do a
+            System.out.println("Enter Your Multiple Test Case Input : ");
+            // since we are given the length of the input we use that
+            int t = sc.nextInt();
+            String[][] data = new String[t][];
+
+            for (int i = 0; i < t; i++) {
+                int n = sc.nextInt();
+                data[i] = new String[n];
+                for (int j = 0; j < n; j++) {
+                    String str = sc.next();
+                    data[i][j] = str;
+                }
+            }
+            // printing
+            for (int i = 0; i < data.length; i++) {
+                for (int j = 0; j < data.length; j++) {
+                    System.out.println(data[i][j] + " ");
+                }
+                System.out.println(); // new line
+            }
+        }
+
+        void MultipleTestCasesWithNoInputLength() {
+            // input : 4 hello world from aayush
+            // here we have to use loops to do this so we do a
+            System.out.println("Enter Your Multiple Test Case Input : ");
+            // same as above we just add a check as to how many elements we get in the input
+            // but since size is unknown here its better to use ArrayList
+            List<List<String>> data = new ArrayList<>();
+            while (sc.hasNext()) {
+                String line = sc.nextLine();
+                String words[] = line.split(" ");
+                data.add(Arrays.asList(words));
+            }
 
         }
 
-        void MatrixInput() {
+        class MatrixInput {
+            void MatrixInputSizeGivenExample() {
+                // input : 3
+                // 0 1 0
+                // 1 0 1
+                // 0 1 0
+                System.out.println("Enter the Adj.Matrix : ");
+                int n = sc.nextInt();
+                int[][] arr = new int[n][n];
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        arr[i][j] = sc.nextInt();
+                    }
+                }
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        System.out.print(arr[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+            }
 
+            void MatrixInputSizeNotGivenExample() {
+                // input : 0 1 0
+                // 1 0 1
+                // 0 1 0
+                System.out.println("Enter Your Matrix : ");
+                // again since the size unknown we use arraylist
+                List<int[]> mat = new ArrayList<>();
+                while (sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    String[] parts = line.split(" ");
+                    int[] row = new int[parts.length];
+                    for (int i = 0; i < row.length; i++) {
+                        row[i] = Integer.parseInt(parts[i]);
+                    }
+                    mat.add(row);
+                }
+                // if you need to convert to traditional array
+                int[][] adj = new int[mat.size()][];
+                for (int i = 0; i < adj.length; i++) {
+                    adj[i] = mat.get(i);
+                }
+            }
         }
 
         void InputWithHashMap() {
