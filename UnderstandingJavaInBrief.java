@@ -376,16 +376,26 @@ class UnderstandingHowToTakeInput {
     // BufferedReader is really efficient as compared to scanner and thus
     // BufferedReader with StringTokenizer is preferred
     class InputWithBFAndST {
-        void SimpleInput() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
+        void SimpleInput() throws IOException {
+            // input : 12
+            int a = Integer.parseInt(br.readLine());
+            System.out.println(a);
         }
 
-        void MultipleInput() {
-
+        void MultipleMixInput() throws IOException {
+            // input : 12 hello 3.14
+            st = new StringTokenizer(br.readLine());
+            int n = Integer.parseInt(st.nextToken());
+            String s = st.nextToken();
+            double d = Double.parseDouble(st.nextToken());
+            System.out.println("THe OutPut is : %n, %s, %d".formatted(n, s, d));
         }
 
         void MultipleTestCases() {
-
+            // input : 4 hello world from aayush
         }
 
         void MatrixInput() {
@@ -395,5 +405,35 @@ class UnderstandingHowToTakeInput {
         void InputWithHashMap() {
 
         }
+    }
+}
+
+// sometimes we require less typing and more concise codes for that very purpose
+// ternary operators exist
+class Ternary {
+    // for example
+    public Ternary(Boolean Flag) {
+        if (Flag) {
+            System.out.println("The Flag is set to be True");
+        } else {
+            System.out.println("The Flag is set to False");
+        }
+        // this is our traditional use of ifelse now in ternary it seems as
+        System.out.println(Flag == true ? "The Flag is set to be True" : "The Flag is set to be False");
+    }
+}
+
+// 179. Largest Number
+class UnderstandingSortingOnArraysAndItsFeatures {
+    // using comparator to simply make a sorting customizable
+    // comes from the comparator interface in java
+    // traditional verbose not preferred method
+    void ComparatorExample() {
+
+    }
+
+    // modern method
+    void ComparatorModernExample() {
+
     }
 }
