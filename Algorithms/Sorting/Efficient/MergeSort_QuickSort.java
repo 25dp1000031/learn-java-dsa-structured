@@ -14,7 +14,7 @@ class MergeSort_QuickSort {
         return arr;
     }
 
-    public int[] Merge(int[] arr, int left, int right, int mid) {
+    public void Merge(int[] arr, int left, int right, int mid) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 

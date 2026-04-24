@@ -5,7 +5,7 @@
  * @print name.
  */
 
-package DataStructures.Variables;
+package DataStructures.Variables.Strings;
 
 public class Strings {
 
