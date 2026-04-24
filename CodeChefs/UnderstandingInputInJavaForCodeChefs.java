@@ -1,9 +1,11 @@
+package CodeChefs;
+
 import java.util.stream.Stream;
 import java.io.*;
 import java.util.*;
 import java.io.InputStreamReader;
 
-public class Practice2 {
+public class UnderstandingInputInJavaForCodeChefs {
     public static void main(String[] args) throws IOException {
         Stream.iterate(2, n -> n + 3)
                 .map(n -> n * 2)
