@@ -24,3 +24,8 @@ class Solution {
         return (dp[dp.length - 1]);
     }
 }
+
+// dp[0] = 0;
+// dp[1] = Math.abs(height[0] - height[1]);
+// dp[i] = Math.min(dp[i - 1] + height[i] - height[i-1], height[i] - height[i -
+// 2] + dp[i - 2])
