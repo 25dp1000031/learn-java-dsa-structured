@@ -24,3 +24,16 @@ class Solution {
 }
 
 // explanation in onenote
+
+class SolutionWhile {
+    public boolean canJump(int[] nums) {
+        int maxCurr = 0;
+        int r = 0;
+        int n = nums.length;
+        while (r <= maxCurr && r < n) {
+            maxCurr = Math.max(maxCurr, r + nums[r]);
+            r++;
+        }
+        return (r == n);
+    }
+}
