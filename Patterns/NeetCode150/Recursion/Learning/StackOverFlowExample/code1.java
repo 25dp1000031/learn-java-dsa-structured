@@ -1,4 +1,4 @@
-package Patterns.NeetCode150.Recursion.Learning;
+package Patterns.NeetCode150.Recursion.Learning.StackOverFlowExample;
 
 public record code1() {
     public static void main(String[] args) {
