@@ -138,7 +138,21 @@ class UnderstandingStrings {
 }
 
 class UnderstandingArraysAndCollectionArray {
+    ArrayList<Integer> list = new ArrayList<>();
 
+    public void commonOpsOnArrayList() {
+        list.set(0, 11);
+        list.set(1, 12);
+        list.set(2, 13);
+        list.set(3, 14);
+        list.set(4, 15);
+        list.remove(0);
+        System.out.println(list.isEmpty());
+        list.forEach((a) -> {
+            System.out.println(a + " ");
+        });
+
+    }
 }
 
 class UnderstandingHashmapsAndHashSets {
@@ -175,6 +189,9 @@ class UnderstandingHashmapsAndHashSets {
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
 
         }
+        map.forEach((k, v) -> {
+            System.out.println(k + " -> " + v);
+        });
 
     }
 }
@@ -436,4 +453,9 @@ class UnderstandingSortingOnArraysAndItsFeatures {
     void ComparatorModernExample() {
 
     }
+}
+
+// understanding exceptions
+class UnderstandingExceptions {
+
 }
