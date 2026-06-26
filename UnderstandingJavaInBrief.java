@@ -34,7 +34,11 @@ class Main {
         // we can reverse the string with a while and 2 pointers swapping or use a quick
         // StringBuilder(preferred)
         String reverse = new StringBuilder(str).reverse().toString();
-
+        UnderstandingExceptions exceptions = new UnderstandingExceptions();
+        exceptions.ExampleArithmeticException(10, 0);
+        exceptions.ExampleArithmeticException(10, 5);
+        int res = exceptions.ExampleOfFinallyAndResources();
+        System.out.println(res);
     }
 }
 
@@ -457,5 +461,96 @@ class UnderstandingSortingOnArraysAndItsFeatures {
 
 // understanding exceptions
 class UnderstandingExceptions {
+    // an exception is an even that interrupts flow of an program consider like
+    // handing errors before they actually arrive
+    // for example 10/0 -> arithmeticException -> so we just handle it before it
+    // arrives
+    public void ExampleArithmeticException(int a, int b) {
+        try {
+            int c = a / b;
+            System.out.println(c);
+        } catch (ArithmeticException e) { // or you can just write Exception in place of ArithmeticException
+            // TODO: handle exception
+            System.out.println("sorry, cannot divide");
+        }
+    }
 
+    // but there are whole lot more types of exceptions for example
+    // NullPointerException
+    public void ExampleNullPointerException(String s) {
+        try {
+            System.out.println(s.length());
+        } catch (NullPointerException e) {
+            // TODO: handle exception
+            System.out.println("sorry, the value is null and does not have a length");
+        }
+    }
+
+    // ArrayIndexOutOfBoundsException
+    public void ExampleArrayIndexOutOfBoundsException(int[] arr, int index) {
+        try {
+            System.out.println(arr[index]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // TODO: handle exception
+            System.out.println("try to keep it in array indexing from 0 to " + (arr.length - 1));
+        }
+    }
+
+    // StringIndexOutOfBoundsException
+    public void ExampleStringIndexOutOfBoundsException(String s, int index) {
+        try {
+            System.out.println(s.charAt(index));
+        } catch (StringIndexOutOfBoundsException e) {
+            // TODO: handle exception
+            System.out.println("try to keep it in String indexing from 0 to " + (s.length() - 1));
+        }
+    }
+
+    // NumberFormatException
+    public void ExampleNumberFormatException() {
+        try {
+            int age = Integer.parseInt("abc");
+            System.out.println(age);
+        } catch (NumberFormatException e) {
+            System.out.println("cannot convert");
+        }
+    }
+
+    // IOException --> important for competitive or cses sheet
+    public void ExampleIOException() {
+        try {
+            System.out.println(" enter a string : ");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String s = br.readLine();
+            System.out.println(s);
+            int ns = Integer.parseInt(s);
+            System.out.println(ns);
+        } catch (IOException e) {
+            System.out.println("encountered an exception");
+        } catch (NumberFormatException e) {
+            System.out.println("Yea we cant cast a String to a number bruh sorry T_T");
+        } finally {
+            System.out.println("now here the code has no idea what exception it is so it just run this");
+            System.out.println(
+                    "p.s `finally` always runs no matter what its mostly use to clean up resources such as Scanner");
+        }
+    }
+
+    public int ExampleOfFinallyAndResources() {
+        // see finally will run regardless and it will also override try if needed for
+        // example
+        try {
+            return 30;
+        } catch (Exception e) {
+            // TODO: handle exception
+            return 10;
+        } finally {
+            return 20;
+            // here finally has overidden both try and catch (so 20 will be returned and not
+            // 10 or 30 even if try had an exception it would go to catch but then as well
+            // finally will overide the catch ) finally will always run and overide
+        }
+        // here resources automatically closes all the resources you don't have to even
+        // explicitly tell it.
+    }
 }
