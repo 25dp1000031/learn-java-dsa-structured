@@ -200,6 +200,107 @@ class UnderstandingHashmapsAndHashSets {
     }
 }
 
+class UnderstandingPriorityQueues {
+    // by default a priority queue or heap for that matter is a min heap that is the
+    // top most element is a min-element
+    // creation
+    // ==========================================================
+    void PriorityQueueDefault() {
+        // 1. Default Priority Queue (Min Heap)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.offer(10);
+        pq.offer(5);
+        pq.offer(20);
+        pq.offer(1);
+
+        System.out.println("Min Heap:");
+        while (!pq.isEmpty()) {
+            System.out.print(pq.poll() + " ");
+        }
+        // Output: 1 5 10 20
+
+        System.out.println("\n");
+    }
+
+    // ==========================================================
+    void PriorityQueueMax() {
+        // 2. Max Heap
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        maxHeap.offer(10);
+        maxHeap.offer(5);
+        maxHeap.offer(20);
+        maxHeap.offer(1);
+
+        System.out.println("Max Heap:");
+        while (!maxHeap.isEmpty()) {
+            System.out.print(maxHeap.poll() + " ");
+        }
+        // Output: 20 10 5 1
+
+        System.out.println("\n");
+    }
+
+    // ==========================================================
+    void PriorityQueueWithArray() {
+        // 3. Priority Queue of int[]
+        // Comparator is REQUIRED because arrays don't implement Comparable
+        PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
+        heap.offer(new int[] { 3, 100 });
+        heap.offer(new int[] { 1, 500 });
+        heap.offer(new int[] { 2, 200 });
+
+        System.out.println("int[] sorted by first element:");
+
+        while (!heap.isEmpty()) {
+            int[] arr = heap.poll();
+            System.out.println(Arrays.toString(arr));
+        }
+        /*
+         * Output:
+         * [1, 500]
+         * [2, 200]
+         * [3, 100]
+         */
+        System.out.println();
+
+        // ==========================================================
+        // 4. Sort int[] by second element
+        PriorityQueue<int[]> secondValueHeap = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
+
+        secondValueHeap.offer(new int[] { 5, 80 });
+        secondValueHeap.offer(new int[] { 1, 20 });
+        secondValueHeap.offer(new int[] { 2, 50 });
+
+        System.out.println("int[] sorted by second element:");
+
+        while (!secondValueHeap.isEmpty()) {
+            System.out.println(Arrays.toString(secondValueHeap.poll()));
+        }
+
+        System.out.println();
+    }
+
+    void PriorityQueueWithArrayList() {
+        // ==========================================================
+        // 5.Priority Queue of ArrayList<Integer>
+        PriorityQueue<ArrayList<Integer>> pqList = new PriorityQueue<>((a, b) -> Integer.compare(a.get(0), b.get(0)));
+
+        pqList.offer(new ArrayList<>(Arrays.asList(3, 40)));
+        pqList.offer(new ArrayList<>(Arrays.asList(1, 10)));
+        pqList.offer(new ArrayList<>(Arrays.asList(2, 30)));
+
+        System.out.println("ArrayList sorted by first element:");
+
+        while (!pqList.isEmpty()) {
+            System.out.println(pqList.poll());
+        }
+
+        System.out.println();
+    }
+
+}
+
 class UnderstandingCollectionSetsAndQueues {
 
 }
