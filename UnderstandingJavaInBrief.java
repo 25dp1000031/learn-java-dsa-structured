@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.logging.Logger;
 import java.io.*;
 // import java.util.Scanner;
 
@@ -39,6 +40,10 @@ class Main {
         exceptions.ExampleArithmeticException(10, 5);
         int res = exceptions.ExampleOfFinallyAndResources();
         System.out.println(res);
+
+        Debugging debug = new Debugging();
+        debug.sout();
+        debug.UsingLogger();
     }
 }
 
@@ -653,5 +658,23 @@ class UnderstandingExceptions {
         }
         // here resources automatically closes all the resources you don't have to even
         // explicitly tell it.
+    }
+}
+
+class Debugging {
+    // a lot of times we need to debug so :
+    // first and simplest is to use system.out.println
+    public void sout() {
+        int k = 0;
+        int j = 4;
+        char c = 'a';
+        System.out.println("ran");
+        System.out.printf("ran with values : k = %d, j= %d, c=%c", k, j, c);
+    }
+
+    // 2nd and better for backend projects is using logger
+    public void UsingLogger() {
+        Logger logger = Logger.getLogger(Logger.class.getName());
+        logger.info("677 -> ran");
     }
 }
